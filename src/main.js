@@ -6,16 +6,17 @@ import { ExchangeService } from './../src/currency-exchange.js';
 
 $(document).ready(function() {
   $('#exchangeCurrency').click(function() {
-    const currency = $('.country').val();
+    const currency = $('#country').val();
     const amount = $('#amount').val();
-    $('.country').val("");
+    $('#country').val("");
     $('#amount').val("");
-
+    
     (async () => {
       let exchangeService = new ExchangeService();
       const response = await exchangeService.getRateByCurrency(currency);
       getRate(response);
       getAmount(amount, response);
+      handleInput(currency, response);
     })();
 
     function getRate(response) {
@@ -28,7 +29,14 @@ $(document).ready(function() {
 
     function getAmount(amount, response) {
       const money = amount * (`${response.conversion_rates[`${currency}`]}`);
-      return $('.showAmount').text(`The value in ${currency} of input number is ${money}`);
+      return $('.showAmount').text(`The value of ${amount} USD is ${money} in ${currency}`);
+    }
+
+    function handleInput(currency, response) {
+      if (currency !== (`${response.conversion_rates[`${currency}`]}`)) {
+        $('.showCurrency').text(`Error: This currency does not exist.`);
+        $('.showAmount').hide();
+      }
     }
   });
 });
