@@ -32,12 +32,10 @@ $(document).ready(function() {
       return $('.showAmount').text(`The value of ${amount} USD is ${money} ${currency}`);
     }
 
-    function handleInput(currency,response) {
-      for (let keys of Object.keys(response)) {
-        if (currency !== keys) {
-          $('.showCurrency').text(`This currency does not exist.`);
-          $('.showAmount').hide();
-        } 
+    function handleInput(currency, response) {
+      if (!response.conversion_rates[`${currency}`]) {
+        $('.showCurrency').text(`This currency does not exist.`);
+        $('.showAmount').hide();
       }
     }
   });
