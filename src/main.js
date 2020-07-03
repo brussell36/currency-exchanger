@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     function getRate(response) {
       if (response) {
-        $('.showCurrency').text(`The current value of ${currency} is ${response.conversion_rates.USD}`);
+        $('.showCurrency').text(`The current exchange rate of ${currency} is ${response.conversion_rates[`${currency}`]}`);
       } else {
         $('.showCurrency').text(`There was an error handling your request.`);
       }
