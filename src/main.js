@@ -5,10 +5,9 @@ import $ from "jquery";
 import { ExchangeService } from './../src/currency-exchange.js';
 
 $(document).ready(function() {
-
   $('#exchangeCurrency').click(function() {
     const currency = $('#country').val();
-    $('#currency').val("");
+    $('#country').val("");
 
     (async () => {
       let exchangeService = new ExchangeService();
@@ -18,7 +17,7 @@ $(document).ready(function() {
 
     function getRate(response) {
       if (response) {
-        $('.showCurrency').text(`The current value of ${currency} is ${response.conversion_rates.currency}`);
+        $('.showCurrency').text(`The current value of ${currency} is ${response.conversion_rates.USD}`);
       } else {
         $('.showCurrency').text(`There was an error handling your request.`);
       }
