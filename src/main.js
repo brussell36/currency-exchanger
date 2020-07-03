@@ -16,6 +16,7 @@ $(document).ready(function() {
       const response = await exchangeService.getRateByCurrency(currency);
       getRate(response);
       getAmount(amount, response);
+      handleInput(amount, response);
     })();
 
     function getRate(response) {
@@ -31,11 +32,11 @@ $(document).ready(function() {
       return $('.showAmount').text(`The value of ${amount} USD is ${money} ${currency}`);
     }
 
-    // function handleInput(currency, response) {
-    //   if (currency !== (`${response.conversion_rates[`${currency}`]}`)) {
-    //     $('.showCurrency').text(`Error: This currency does not exist.`);
-    //     $('.showAmount').hide();
-    //   }
-    // }
+    function handleInput(currency, response) {
+      if (currency !== `${response.conversion_rates}`) {
+        $('.showCurrency').text(`This currency does not exist.`);
+        $('.showAmount').hide();
+      }
+    }
   });
 });
