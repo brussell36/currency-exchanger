@@ -1,0 +1,17 @@
+.col-lg-4 {
+  list-style-type: none;
+}
+
+.btn {
+  margin: 2% 0 2% 0;
+}
+
+.showCurrency {
+  font-size: 24px;
+  margin: 1em;
+}
+
+.showAmount {
+  font-size: 24px;
+  margin: 1em;
+}
