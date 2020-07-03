@@ -16,7 +16,7 @@ $(document).ready(function() {
       const response = await exchangeService.getRateByCurrency(currency);
       getRate(response);
       getAmount(amount, response);
-      // handleInput(currency, response);
+      handleInput(currency, response);
     })();
 
     function getRate(response) {
@@ -32,11 +32,13 @@ $(document).ready(function() {
       return $('.showAmount').text(`The value of ${amount} USD is ${money} ${currency}`);
     }
 
-    // function handleInput(currency) {
-    //   if (currency !== ) {
-    //     $('.showCurrency').text(`This currency does not exist.`);
-    //     $('.showAmount').hide();
-    //   }
-    // }
+    function handleInput(currency,response) {
+      for (let keys of Object.keys(response)) {
+        if (currency !== keys) {
+          $('.showCurrency').text(`This currency does not exist.`);
+          $('.showAmount').hide();
+        } 
+      }
+    }
   });
 });
