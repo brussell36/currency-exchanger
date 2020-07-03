@@ -8,10 +8,16 @@
 <body>
   <div class="container">
     <h1>Currency Exchange Rates</h1>
-      <div class="form-group">
-        <label for="country">Enter The Countries Three Letter Currency Code:</label>
-        <input type="text" id="country">
+    <div id="country" class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose A Country
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" value="CLP">Chile</button>
+        <button class="dropdown-item" value="CNY">China</button>
+        <button class="dropdown-item" value="HRK">Croatia</button>
       </div>
+    </div>
       <h1>How Many US Dollars To Exchange?</h1>
       <div class="form-group">
         <label for="amount">Enter An Amount:</label>
