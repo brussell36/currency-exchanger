@@ -7,7 +7,9 @@ import { ExchangeService } from './../src/currency-exchange.js';
 $(document).ready(function() {
   $('#exchangeCurrency').click(function() {
     const currency = $('#country').val();
+    const amount = $('#amount').val();
     $('#country').val("");
+    $('#amount').val("");
 
     (async () => {
       let exchangeService = new ExchangeService();
