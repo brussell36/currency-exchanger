@@ -15,6 +15,7 @@ $(document).ready(function() {
       let exchangeService = new ExchangeService();
       const response = await exchangeService.getRateByCurrency(currency);
       getRate(response);
+      getAmount(amount, response);
     })();
 
     function getRate(response) {
@@ -23,6 +24,11 @@ $(document).ready(function() {
       } else {
         $('.showCurrency').text(`There was an error handling your request.`);
       }
+    }
+
+    function getAmount(amount, response) {
+      const money = amount * (`${response.conversion_rates[`${currency}`]}`);
+      return $('.showAmount').text(`The value in ${currency} of input number is ${money}`);
     }
   });
 });

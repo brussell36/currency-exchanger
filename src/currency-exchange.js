@@ -13,8 +13,4 @@ export class ExchangeService {
       return false;
     }
   }
-  getAmount(amount) {
-    const money = amount * (`${response.conversion_rates[`${currency}`]}`);
-    return $('.showAmount').text(`The value in ${currency} of input number is ${money}`);
-  }
 }
